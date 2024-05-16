@@ -1,0 +1,94 @@
+@import "variables";
+
+// reset
+* {
+  box-sizing: border-box;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+a,
+a:active,
+a:visited {
+  color: $primary-color;
+}
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content wrapper */
+.site-content {
+  flex: 1;
+}
+
+/* Header styles */
+.site-header {
+  background-color: $primary-tint;
+  padding: 10px 0;
+  color: #fff;
+}
+
+/* Navigation styles */
+.site-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Menu styles */
+.primary-menu {
+  display: flex;
+  gap: 20px;
+}
+
+/* Menu item styles */
+.primary-menu li {
+  display: inline;
+}
+
+/* Menu link styles */
+.primary-menu a {
+  color: #fff;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Menu link hover styles */
+.primary-menu a:hover {
+  background-color: #575757;
+  color: #fff;
+}
+
+/* Footer styles */
+footer {
+  flex-shrink: 0; /* Do not shrink footer if content overflows */
+  margin-top: auto; /* Push footer to bottom of flex container */
+  background-color: $primary-tint;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+// desktop
+@media screen and (min-width: 768px) {
+}
