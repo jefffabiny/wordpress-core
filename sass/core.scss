@@ -23,7 +23,7 @@ a {
 a,
 a:active,
 a:visited {
-  color: variables.$primary-color;
+  color: variables.$primary-link;
 }
 
 /* General styles */
@@ -32,6 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: variables.$primary-background;
 }
 
 /* Main content wrapper */
@@ -41,9 +42,27 @@ body {
 
 /* Header styles */
 .site-header {
-  background-color: variables.$secondary-color;
-  padding: 10px 0;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  backdrop-filter: blur(10px);
+  -webkit-backface-visibility: hidden; /* Fix for Safari blur artifacts */
+  backface-visibility: hidden;
+}
+
+/* Adjust header position when admin bar is present */
+body.admin-bar .site-header {
+  top: 32px; /* Default WordPress admin bar height */
+}
+
+@media screen and (max-width: 782px) {
+  body.admin-bar .site-header {
+    top: 0
+  }
 }
 
 /* Navigation styles */
@@ -55,22 +74,30 @@ body {
 
 /* Menu styles */
 .primary-menu {
+  margin: 0;
+  padding: 0;
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Menu item styles */
 .primary-menu li {
-  display: inline;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 /* Menu link styles */
 .primary-menu a {
-  color: #fff;
+  color: #000000;
   padding: 10px 15px;
-  text-transform: uppercase;
   font-size: 14px;
   transition: background-color 0.3s, color 0.3s;
+  display: block;
+  width: 125px;
+  text-align: center;
+  margin: 0;
 }
 
 /* Menu link hover styles */
@@ -83,8 +110,7 @@ body {
 footer {
   flex-shrink: 0; /* Do not shrink footer if content overflows */
   margin-top: auto; /* Push footer to bottom of flex container */
-  background-color: variables.$secondary-color;
-  color: #fff;
+  background-color: variables.$primary-background;
   text-align: center;
   padding: 10px 0;
 }
