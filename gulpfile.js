@@ -1,17 +1,28 @@
 const { src, dest, watch } = require("gulp");
-const sass = require("gulp-sass")(require("sass")); // Specify Sass compiler
+const gulpSass = require('gulp-sass');
+const sass = gulpSass(require('sass'));
+
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 const rename = require("gulp-rename");
-const sassFiles = "sass/*.scss"; // Path to your Sass files
+const sourcemaps = require("gulp-sourcemaps");
+const path = require("path");
+
+const sassFiles = path.join(__dirname, "sass/**/*.scss");
+const cssDest = path.join(__dirname, "css");
 
 function styles() {
   return src(sassFiles)
+    .pipe(sourcemaps.init())
     .pipe(sass().on("error", sass.logError))
-    .pipe(postcss([autoprefixer(), cssnano()]))
+    .pipe(postcss([autoprefixer(), cssnano()]).on("error", (err) => {
+      console.error(err);
+      this.emit("end");
+    }))
     .pipe(rename({ suffix: ".min" }))
-    .pipe(dest("css"));
+    .pipe(sourcemaps.write("."))
+    .pipe(dest(cssDest));
 }
 
 function watchSass() {

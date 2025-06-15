@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables";
 
 // reset
 * {
@@ -23,7 +23,7 @@ a {
 a,
 a:active,
 a:visited {
-  color: $primary-color;
+  color: variables.$primary-color;
 }
 
 /* General styles */
@@ -41,7 +41,7 @@ body {
 
 /* Header styles */
 .site-header {
-  background-color: $primary-tint;
+  background-color: variables.$secondary-color;
   padding: 10px 0;
   color: #fff;
 }
@@ -83,7 +83,7 @@ body {
 footer {
   flex-shrink: 0; /* Do not shrink footer if content overflows */
   margin-top: auto; /* Push footer to bottom of flex container */
-  background-color: $primary-tint;
+  background-color: variables.$secondary-color;
   color: #fff;
   text-align: center;
   padding: 10px 0;
