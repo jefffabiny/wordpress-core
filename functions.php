@@ -22,3 +22,28 @@ function register_theme_menus()
     ));
 }
 add_action('init', 'register_theme_menus');
+
+function customize_register($wp_customize)
+{
+    // Add a section under the "Menus" panel for navigation-related theme options
+    $wp_customize->add_section('theme_nav_options', array(
+        'title' => __('Navigation Options', 'textdomain'),
+        'panel' => 'nav_menus',
+        'priority' => 160,
+    ));
+
+    // Add a setting for hiding the main navigation
+    $wp_customize->add_setting('hide_main_nav', array(
+        'default'   => false,
+        'transport' => 'refresh',
+    ));
+
+    // Add a control to toggle the setting
+    $wp_customize->add_control('hide_main_nav_control', array(
+        'label'    => __('Hide Main Navigation', 'textdomain'),
+        'section'  => 'theme_nav_options',
+        'settings' => 'hide_main_nav',
+        'type'     => 'checkbox',
+    ));
+}
+add_action('customize_register', 'customize_register');

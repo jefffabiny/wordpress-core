@@ -11,14 +11,17 @@
 
 <body <?php body_class(); ?>>
     <header class="site-header">
-        <nav id="site-navigation" class="site-navigation">
-            <?php
-            wp_nav_menu(array(
-                'theme_location' => 'primary',
-                'menu_class' => 'primary-menu row',
-            ));
-
-            ?>
-        </nav>
+        <?php if ( ! get_theme_mod( 'hide_main_nav', false ) ) : ?>
+            <nav id="site-navigation" class="site-navigation">
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'primary',
+                        'menu_class'     => 'primary-menu row',
+                    )
+                );
+                ?>
+            </nav>
+        <?php endif; ?>
     </header>
     <div class="content">
