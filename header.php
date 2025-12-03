@@ -25,3 +25,8 @@
         <?php endif; ?>
     </header>
     <div class="content">
+    <div class="site-logo" style="top:15px;left:15px;z-index:1000;">
+        <a href="<?php echo esc_url(home_url('/')); ?>">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/GPM_edited_edited.avif" alt="Site Logo" style="height:80px;width:auto;">
+        </a>
+    </div>
